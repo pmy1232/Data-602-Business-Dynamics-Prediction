@@ -1,0 +1,89 @@
+﻿variable,description,mapping_dict, , , , 
+year,Year of Observation, , , , , 
+st,State Code,"{
+    1: ""AL"", 2: ""AK"", 4: ""AZ"", 5: ""AR"", 6: ""CA"",
+    8: ""CO"", 9: ""CT"", 10: ""DE"", 11: ""DC"", 12: ""FL"",
+    13: ""GA"", 15: ""HI"", 16: ""ID"", 17: ""IL"", 18: ""IN"",
+    19: ""IA"", 20: ""KS"", 21: ""KY"", 22: ""LA"", 23: ""ME"",
+    24: ""MD"", 25: ""MA"", 26: ""MI"", 27: ""MN"", 28: ""MS"",
+    29: ""MO"", 30: ""MT"", 31: ""NE"", 32: ""NV"", 33: ""NH"",
+    34: ""NJ"", 35: ""NM"", 36: ""NY"", 37: ""NC"", 38: ""ND"",
+    39: ""OH"", 40: ""OK"", 41: ""OR"", 42: ""PA"", 44: ""RI"",
+    45: ""SC"", 46: ""SD"", 47: ""TN"", 48: ""TX"", 49: ""UT"",
+    50: ""VT"", 51: ""VA"", 53: ""WA"", 54: ""WV"", 55: ""WI"",
+    56: ""WY""
+}", , , , 
+metro,"Establishments located in Metropolitan or Micropolitan Statistical Areas are in cells designated 
+with “M”, while those in non-metropolitan areas are aggregated into cells designated with “N”. 
+Cells designated as “SW” (signifying “statewide”) are assigned to establishments without a fixed 
+location such as employee leasing establishments. Cells designated as “U” (signifying 
+“unclassified”) are assigned to establishments without a valid county code","{
+    ""M"": ""Metropolitan or Micropolitan Statistical Area"",
+    ""N"": ""Non-metropolitan area"",
+    ""SW"": ""Statewide (no fixed location, e.g., employee leasing)"",
+    ""U"": ""Unclassified (no valid county code)""
+}", , , , 
+sector,"NAICS Code - The North American Industry Classification System (NAICS) is the standard used by Federal statistical agencies in classifying business establishments for the purpose of collecting, analyzing, and publishing statistical data related to the U.S. business economy.","{
+    ""11"": ""Agriculture, Forestry, Fishing and Hunting"",
+    ""21"": ""Mining, Quarrying, and Oil and Gas Extraction"",
+    ""22"": ""Utilities"",
+    ""23"": ""Construction"",
+    ""31-33"": ""Manufacturing"",
+    ""42"": ""Wholesale Trade"",
+    ""44-45"": ""Retail Trade"",
+    ""48-49"": ""Transportation and Warehousing"",
+    ""51"": ""Information"",
+    ""52"": ""Finance and Insurance"",
+    ""53"": ""Real Estate and Rental and Leasing"",
+    ""54"": ""Professional, Scientific, and Technical Services"",
+    ""55"": ""Management of Companies and Enterprises"",
+    ""56"": ""Administrative and Support and Waste Management and Remediation Services"",
+    ""61"": ""Educational Services"",
+    ""62"": ""Health Care and Social Assistance"",
+    ""71"": ""Arts, Entertainment, and Recreation"",
+    ""72"": ""Accommodation and Food Services"",
+    ""81"": ""Other Services (except Public Administration)""
+}", , , , 
+eagecoarse,"Establishment age coarse. This is the coarse version of the establishment age variable defined 
+above. Includes 5 broader establishment age classes.","{""a) 0"" : 0, ""b) 1 to 5"" : 0, ""c) 6 to 10"" : 1, ""d) 11+"" : 1,""e) Left Censored"" : np.nan}", , , , 
+firms,"A simple count of the number of firms in the cell. For state level tables, a firm with establishments 
+in multiple states be counted multiple times, once in each state, irrespective of the portion of the 
+firm residing in that state. ", , , , , 
+estabs,A simple count of the number of establishments in the cell., , , , , 
+emp,"Paid employment consists of full and part-time employees, including salaried officers and executives of corporations, who are on the payroll in the pay period including March 12. Included are employees on paid sick leave, holidays, and vacations.", , , , , 
+denom,"Davis-Haltiwanger-Schuh (DHS) denominator. For time t, denom is the average of employment 
+for times t and t-1. This variable attempts to prevent transitory shocks from creating a bias to the 
+relationship between net growth from t-1 to t and size. ", , , , , 
+estabs_entry,A count of establishments born within the cell during the last 12 months., , , , , 
+estabs_entry_rate,100 * (estabs_entry at time t divided by the average of estabs at t and t-1)., , , , , 
+estabs_exit,A count of establishments exiting from within the cell during the last 12 months., , , , , 
+estabs_exit_rate,100 * (estabs_exit at time t divided by the average of estabs at t and t-1)., , , , , 
+job_creation,"Count of all employment gains within the cell from expanding and opening establishments 
+between the week of March 12 of the prior year to the current year.", , , , , 
+job_creation_births,"Count of employment gains within the cell from establishment openings (births) between the week 
+of March 12 of the prior year to the current year.   ", , , , , 
+job_creation_continuers,"Count of employment gains within the cell from continuing establishments that expanded between 
+the week of March 12 of the prior year to the current year.  ", , , , , 
+job_creation_rate_births,100 * (job_creation_births / denom), , , , , 
+job_creation_rate,100 * (job_creation / denom), , , , , 
+job_destruction,"Count of all employment losses within the cell from contracting and closing establishments 
+between the week of March 12 of the prior year to the current year. ", , , , , 
+job_destruction_deaths,"Count of all employment losses within the cell from establishment closings (deaths) between the 
+week of March 12 of the prior year to the current year.   ", , , , , 
+job_destruction_continuers,"Count of employment losses within the cell from continuing establishments that contracted 
+between the week of March 12 of the prior year to the current year. ", , , , , 
+job_destruction_rate_deaths,100 * (job_destruction_deaths / denom), , , , , 
+job_destruction_rate,100 * (job_destruction / denom), , , , , 
+net_job_creation,job_creation - job_destruction, , , , , 
+net_job_creation_rate,job_creation_rate - job_destruction_rate , , , , , 
+reallocation_rate,"job_creation_rate + job_destruction_rate - abs(net_job_creation_rate).  This is often referred to as 
+an “excess” reallocation rate since it measures the rate of job reallocation over and above that 
+needed to accommodate the net job creation in the cell. A gross reallocation measure is simply the 
+sum of the job_creation_rate and the job_destruction_rate.", , , , , 
+firmdeath_firms,"Count of firms that have exited in their entirety during the period. All establishments owned by the 
+firm must exit to be considered a firm death. This definition of firm death is narrow and strictly 
+applied, so that a firm with 100 establishments would not qualify as a firm death if 99 exited while 
+1 continued under different ownership. Note firm legal entities that cease to exist because of 
+merger and acquisition activity are not classified as firm deaths in the BDS data. ", , , , , 
+firmdeath_estabs,Count of establishments associated with firm deaths., , , , , 
+firmdeath_emp,Count of employment associated with firm deaths. , , , , , 
