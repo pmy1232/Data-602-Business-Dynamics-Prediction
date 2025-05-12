@@ -1,0 +1,14 @@
+Business Establishment Survival Classification
+
+This project explores the feasibility of predicting business establishment survival using economic and geographic features from the U.S. Census Bureau’s Business Dynamics Statistics dataset. 
+A binary classification method was developed to identify establishments with a survival rate greater than 50%, based on variables such as industry sector, employment trends, and firm size. 
+Results from evaluation multiple models showed moderate predictive capacity of survival class (@ 69% accuracy) using a Random Forest Classification model, with little improvement after model tuning methods were applied.
+Next steps include revising methodology for calculating survival rate, creating additonal engineered features, and improving data cleaning techniques.
+
+
+Dataset
+
+**Source**: [U.S. Census Bureau – Business Dynamics Statistics (BDS)](https://www.census.gov/programs-surveys/bds.html)
+State by Metro/Non-Metro by Sector by Establishment Age Coarse [83MB]
+
+
